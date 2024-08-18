@@ -62,7 +62,7 @@ WITH
    basket_contents AS (
       SELECT
          *,
-         STRING_AGG(item_name) OVER (
+         STRING_AGG(item_id) OVER (
             PARTITION BY
                session_id
          ) AS abandoned_products
