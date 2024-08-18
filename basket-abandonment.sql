@@ -33,10 +33,6 @@ WITH
    last_event_per_session AS (
       SELECT
          *,
-         MIN(normal_timestamp) OVER (
-            PARTITION BY
-               session_id
-         ) AS first_event_dttm,
          MAX(normal_timestamp) OVER (
             PARTITION BY
                session_id
