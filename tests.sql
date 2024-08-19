@@ -1,20 +1,21 @@
 -- Check for missing email addresses
 SELECT
-  COUNT(*) AS missing_email_count
+   COUNT(*) AS missing_email_count
 FROM
-  `your_project.your_dataset.your_table`
+   `basket-abandonment.emails.basket_abandonment`
 WHERE
-  email IS NULL;
+   email IS NULL;
 
 
-  -- Check for duplicate user_pseudo_id and event_timestamp pairs
+-- Check for duplicate user_pseudo_id and event_timestamp pairs
 SELECT
-  user_pseudo_id,
-  event_timestamp,
-  COUNT(*) AS record_count
+   user_pseudo_id,
+   event_timestamp,
+   COUNT(*) AS record_count
 FROM
-  `your_project.your_dataset.your_table`
+   `basket-abandonment.emails.basket_abandonment`
 GROUP BY
-  user_pseudo_id, event_timestamp
+   user_pseudo_id,
+   event_timestamp
 HAVING
-  record_count > 1;
+   record_count > 1;
