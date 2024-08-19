@@ -19,7 +19,7 @@ WITH
          i.item_id,
          i.item_name
       FROM
-         `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_12_2020` AS ev
+         `basket-abandonment.emails.events_12_2020` AS ev
          LEFT JOIN UNNEST (ev.items) AS i
    ),
    add_emails AS (
