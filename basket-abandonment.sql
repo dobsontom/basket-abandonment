@@ -20,7 +20,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
             i.item_id,
             i.item_name
          FROM
-            basket-abandonment.emails.events_12_2020 AS ev
+            `basket-abandonment.emails.events_12_2020` AS ev
             LEFT JOIN UNNEST (ev.items) AS i
       ),
       add_emails AS (
