@@ -10,7 +10,7 @@ This project is designed to detect and analyse instances of basket abandonment f
   
 - **Automation**: The detection process is set up to run every 15 minutes, ensuring that the data is consistently updated. This allows for timely email triggers via Adobe Campaign, reminding users about their abandoned carts.
 
-- **Detailed Documentation**: The submission includes a comprehensive PDF document explaining the approach, data sources, and technical details of the project.
+- **Documentation**: The submission includes a comprehensive PDF document explaining the approach, data sources, and technical details of the project.
 
 ## Files and Directories
 
@@ -28,11 +28,11 @@ This project is designed to detect and analyse instances of basket abandonment f
 ## How to Use
 
 1. **Viewing the Submission**:
-   - The `Cloud_Case_Study_Submission_Tom_Dobson.pdf` file contains the detailed documentation of the project.
+   - The `Cloud_Case_Study_Submission_Tom_Dobson.pdf` file contains the detailed documentation for the project.
    
 2. **Running the SQL Scripts**:
    - The SQL scripts located in the `queries` directory can be executed in BigQuery to generate the Actionable Dataset needed for basket abandonment detection.
-   - The scripts should be scheduled in BigQuery to automate the detection process, ensuring up-to-date actionable datasets.
+   - `basket_abandonment.sql` should be scheduled in BigQuery to automate the detection process, ensuring up-to-date actionable datasets.
 
 ## Contact
 
