@@ -2,7 +2,7 @@
 SELECT
    COUNT(*) AS missing_email_count
 FROM
-   `basket-abandonment.emails.basket_abandonment`
+   `basket-abandonment.basket_abandonment.actionable_dataset`
 WHERE
    email IS NULL;
 
@@ -13,7 +13,7 @@ SELECT
    event_timestamp,
    COUNT(*) AS record_count
 FROM
-   `basket-abandonment.emails.basket_abandonment`
+   `basket-abandonment.basket_abandonment.actionable_dataset`
 GROUP BY
    user_pseudo_id,
    event_timestamp

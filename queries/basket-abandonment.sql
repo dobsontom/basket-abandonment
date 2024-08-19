@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
+CREATE OR REPLACE TABLE `basket-abandonment.basket_abandonment.actionable_dataset` AS (
    WITH
       events_data AS (
          SELECT
@@ -20,7 +20,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
             i.item_id,
             i.item_name
          FROM
-            `basket-abandonment.emails.events_12_2020` AS ev
+            `basket-abandonment.basket_abandonment.events_12_2020` AS ev
             LEFT JOIN UNNEST (ev.items) AS i
       ),
       add_emails AS (
@@ -29,7 +29,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
             em.email
          FROM
             events_data ev
-            INNER JOIN `basket-abandonment.emails.email_lookup` em ON ev.user_pseudo_id = em.user_pseudo_id
+            INNER JOIN `basket-abandonment.basket_abandonment.email_lookup` em ON ev.user_pseudo_id = em.user_pseudo_id
       ),
       session_last_event AS (
          SELECT

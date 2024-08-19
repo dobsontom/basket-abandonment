@@ -1,5 +1,4 @@
-CREATE
-OR REPLACE TABLE `basket-abandonment.emails.events_12_2020` AS
+CREATE OR REPLACE TABLE `basket-abandonment.basket_abandonment.events_12_2020` AS
 SELECT
    *
 FROM
