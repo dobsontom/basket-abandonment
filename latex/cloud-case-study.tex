@@ -1,0 +1,492 @@
+% File: cloud-case-study.tex
+% Author: Tom Dobson
+% Description: Cloud Case Study Submission for Analytics Engineer Role at fifty-five
+
+\documentclass[a4paper,11pt,leqno,openbib,oldfontcommands,oneside]{memoir}
+
+% Metadata
+\usepackage{datetime}
+\usepackage{ifpdf}
+\ifpdf
+\pdfinfo{
+   /Title (Cloud Case Study Submission)
+   /Author (Tom Dobson)
+   /Subject (Cloud Case Study Submission for Analytics Engineer Role at fifty-five)
+   /Keywords (Analytics, Data, fifty-five, Challenge)
+   /Producer (LaTeX with hyperref)
+   /Creator (pdflatex)
+   /CreationDate (D:\pdfdate)
+   /ModDate (D:\pdfdate)
+   /Trapped (False)
+}
+\fi
+
+% Colour and Hyperlinks
+\usepackage{xcolor}
+\definecolor{linkblue}{RGB}{6,69,173}
+\usepackage[colorlinks=true,urlcolor=linkblue]{hyperref}
+
+\hypersetup{
+    pdfauthor={Tom Dobson},
+    pdftitle={Cloud Case Study Submission},
+    pdfsubject={Cloud Case Study Submission for Analytics Engineer Role at fifty-five},
+    pdfkeywords={Analytics, Data, fifty-five, Challenge},
+    pdfproducer={LaTeX with hyperref},
+    pdfcreator={pdflatex}
+}
+
+% Layout Settings
+\OnehalfSpacing* % Sets caption spacing to 1.5
+\settrimmedsize{297mm}{210mm}{*}
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+\settypeblocksize{634pt}{448.13pt}{*}
+\setulmargins{4cm}{*}{*}
+\setlrmargins{*}{*}{1.5}
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+\setheadfoot{\onelineskip}{2\onelineskip}
+\setheaderspaces{*}{2\onelineskip}{*}
+\checkandfixthelayout
+
+% Font Settings
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage{libertinust1math}
+\usepackage{mathastext}
+\frenchspacing
+
+% Mathematics and Symbols
+\mathchardef\mhyphen="2D %Prints a hyphen in maths environments
+\let\oldemptyset\emptyset %Enables a pretty emptyset
+
+\usepackage{amsfonts, amsmath, amssymb, amsthm, newlfont, upgreek, latexsym, wasysym, mathrsfs, textcomp}
+
+% Section Formatting
+\setsecnumdepth{subparagraph}
+\setcounter{tocdepth}{5}
+\usepackage{titlesec}
+\renewcommand{\thesection}{Part \arabic{section}:}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\titlelabel{\thetitle\:\:}
+
+% Customize subsubsection format: run-in style, no numbering, bold
+\titleformat{\subsubsection}[runin]
+  {\normalfont\bfseries}  % Style of the title
+  {}                      % Suppress numbering
+  {0pt}                   % Space between the number (which is suppressed) and title
+  {}                      % Code before the title (empty since no number is used)
+
+% Section Spacing
+\titlespacing*{\section}
+{0pt}{10pt plus 2pt minus 2pt}{6pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}
+{0pt}{8pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing*{\subsubsection}
+{0pt}{6pt plus 1pt minus 1pt}{3pt plus 1pt minus 1pt}
+
+% Header and Footer Settings
+\makepagestyle{body}
+\makeoddfoot{body}{}{\thepage}{}
+\makeheadrule{body}{\textwidth}{\normalrulethickness}
+\makeevenhead{body}{\small{\leftmark}}{}{}
+\makeoddhead{body}{}{}{\small{\rightmark}}
+\pagestyle{body}
+\uppercaseheads
+
+% Additional Packages
+\usepackage{graphicx, float, verbatim, caption, siunitx, booktabs, longtable, array, footmisc, babel, memhfixc, natbib, url}
+\setlength{\arrayrulewidth}{0.4pt}  % Default is usually 0.4pt; reduce for thinner lines
+\usepackage[utf8]{inputenc}
+
+% SI Units Configuration
+\DeclareSIUnit\ml{ml}
+\DeclareSIUnit\mM{mM}
+\DeclareSIUnit\ul{$\upmu l$}
+\DeclareSIUnit\ug{$\upmu g$}
+\DeclareSIUnit[quantity-product = {}]\degree{\text{\textdegree C}}
+\DeclareSIUnit[quantity-product = {}]\percent{\text{\%}}
+\DeclareSIUnit[quantity-product = {}]\kb{\text{\kb}}
+\sisetup{range-phrase=--}
+\sisetup{range-units = single}
+\sisetup{detect-all = true}
+
+% Caption Configuration
+\usepackage[font=small,labelfont=bf,labelsep=period,skip=12pt]{caption}
+\setlength{\textfloatsep}{20pt plus 2pt minus 5pt}
+
+% Font Sizing
+\makeatletter
+\newcommand\semiHuge{\@setfontsize\semiHuge{22.72}{27.38}}
+\makeatother
+
+% Typesetting Improvements
+\usepackage{microtype}
+
+% Page Layout Adjustments
+\addtolength{\skip\footins}{2pc plus 5pt}
+\widowpenalty=100000
+\clubpenalty=100000
+\raggedbottom
+
+% Tilde Character
+\newcommand{\textapproxi}{\raisebox{0.5ex}{\texttildelow}}
+
+% Enumerations and Lists
+\usepackage{enumitem}
+\setlist[itemize,enumerate,1]{itemsep=0em}
+\setlist[itemize,enumerate,2]{itemsep=0em}
+\setlist[itemize,enumerate,3]{itemsep=0em}
+\setlist[itemize,2]{label=\textbullet}
+
+% Fancy Header Settings
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Clear all header and footer fields
+\fancyhf{}
+
+% Set header line with the section name
+\fancyhead[L]{\thesection\hspace{0.5em}\leftmark}
+
+% Right-align the page number above the horizontal line
+\fancyhead[R]{\thepage\hspace{0.5em}}
+
+% Draw a horizontal line under the header
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Section name formatting (optional)
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+
+% TikZ and PGF for Diagrams
+\usepackage{pgf, tikz}
+\usetikzlibrary{fit, positioning, shapes.geometric} % Load the required TikZ libraries
+
+% Custom tcolorbox Environment for Sidenotes
+\usepackage{tcolorbox}
+\tcbset{
+    sidenote/.style={
+        colback=gray!3,
+        colframe=gray!55,
+        width=\dimexpr\textwidth-1cm\relax,
+        left=0.4cm,
+        right=0.4cm,
+        boxrule=.3pt,
+        fonttitle=\bfseries,
+        coltitle=black,
+        coltext=black,
+        before skip=0em,
+        after skip=0em
+    }
+}
+
+% Inline Code Formatting with tcolorbox
+\renewcommand{\ttdefault}{pcr}
+\newtcbox{\inlinecode}{on line,
+  colback=gray!16, colframe=gray!16, boxrule=.5pt, arc=3pt,
+  boxsep=0pt, left=4pt, right=4pt, top=2pt, bottom=2pt,
+  fontupper=\bfseries\ttfamily\footnotesize}
+
+% Listings for Code Blocks
+\usepackage{listings}
+\lstset{
+    language=SQL,
+    basicstyle=\ttfamily\small\bfseries,
+    keywordstyle=\color{linkblue}\bfseries,
+    commentstyle=\color{gray},
+    stringstyle=\color{black},
+    showstringspaces=true,
+    frame=none,
+    breaklines=true,
+    backgroundcolor=\color{white},
+    literate={{{}{{\{\{}2{{}}}}{{\}\}}2}{\}}} % Custom Jinja brackets
+}
+
+\lstdefinestyle{myListingStyle} 
+    {
+        basicstyle = \small\ttfamily,
+        breaklines = true,
+    }
+
+% Define a command for clearing to the next odd page
+\newcommand{\clearemptydoublepage}{\newpage{\thispagestyle{empty}\cleardoublepage}}
+
+% Font for Section Headings
+\setsecheadstyle{\biolinum\Large\bfseries}
+\setsubsecheadstyle{\biolinum\large\bfseries}
+\setsubsubsecheadstyle{\biolinum\normalsize\bfseries}
+\setparaheadstyle{\biolinum\normalsize\bfseries}
+\setsubparaheadstyle{\biolinum\normalsize\bfseries}
+
+\begin{document}
+\sisetup{detect-all = true}
+
+\frontmatter
+
+\begin{titlingpage}
+\begin{SingleSpace}
+\calccentering{\unitlength} 
+\begin{adjustwidth*}{\unitlength}{-\unitlength}
+\vspace*{0mm}
+\begin{center}
+
+\vspace{20mm}
+
+% Title
+{\biolinum\semiHuge Submission for the Cloud\\Case Study}\\%[4mm]
+
+\vspace{8mm}
+{\large by}\\
+\vspace{8mm}
+{\large\textsc{Tom Dobson}}\\
+\vspace{12mm}
+
+% Logo
+\includegraphics[scale=.3]{fifty-five-logo.pdf}\\
+\vspace{6mm}
+
+% Quote
+{\biolinum\large{`We help brands leverage data'}}\\
+\vspace{2mm}
+{\biolinum\normalsize \textsc{fifty-five UK Ltd.}}\\
+
+\vspace{35mm}
+
+% Subtitle
+\begin{minipage}{9cm}
+\leftskip=0pt plus.3fil
+\rightskip=0pt plus-.3fil
+\parfillskip=0pt plus.6fil
+\biolinum{A take-home assignment submitted for\par the role of Analytics Engineer.}
+\end{minipage}\\
+
+\vspace{3mm}
+\rule{3cm}{0.1pt}
+
+% Date
+\vspace{3mm}
+{\biolinum\textsc{August 2024}}
+
+\end{center}
+\end{adjustwidth*}
+\end{SingleSpace}
+\end{titlingpage}
+
+\mainmatter
+
+\section{High-Level Solution}
+\label{sec:Part1}
+
+\subsection{Conditions for Abandonment}
+To alert customers who have added items to their basket and then abandoned it, we must first define the conditions of basket abandonment. The following conditions can be used to form a basic definition of basket abandonment:
+
+\begin{itemize}
+    \item \textbf{Condition 1:} During a session, one or more items are added to the basket.
+    \item \textbf{Condition 2:} There has been a window of 45 minutes since the last session activity. 
+    \begin{itemize}
+        \item Accounting for the 15-minute delay in log data population, this provides users with a 45-minute to 1-hour window to complete the purchase before an abandonment alert is triggered.
+        \item Calculating the abandonment window relative to the last session activity is preferable to using the last basket addition time, as it reduces the likelihood of false positives for users who are still interacting with the store and considering their purchase.
+    \end{itemize}
+    \item \textbf{Condition 3:} The session is not associated with a purchase. Any session with a purchase event will not be considered for abandonment. For this case study, it is assumed that a purchase can only be for all items in the basket.
+\end{itemize}
+
+\begin{center}
+\begin{tcolorbox}[sidenote]
+Although not tracked in this analysis due to time and data limitations, other conditions that could be considered include whether items were removed from the basket and whether they were purchased by the same user from a different device/session.
+\end{tcolorbox}
+\end{center}
+
+\subsection{Events Tracking}
+Our next task is to establish which fields and values from \inlinecode{events\_12\_2020} can be used as indicators for our conditions, what supplementary information must also be captured for our analysis, and how these can be combined. The following events are logged in the \inlinecode{event\_name} field and will be tracked to identify basket abandonment:
+
+\begin{itemize}
+    \item \textbf{add\_to\_cart:} Occurrences of \inlinecode{add\_to\_cart} will determine if items were added to the basket during a session.
+    \item \textbf{purchase:} An occurrence of \inlinecode{purchase} will determine if items were purchased during a session.
+    \item \textbf{click, scroll, page\_view, etc.:} Since the data only contains logs for the Google Merchandise Store, any other event can be used to determine if a user is still interacting with the store.
+\end{itemize}
+
+\noindent In addition to these events, the following dimensions will be included to enable us to create the Actionable Dataset and conduct our analysis:
+
+\begin{itemize}
+    \item \textbf{event\_timestamp:} This field contains the UNIX timestamp of the action performed (e.g., 1612091260872757) and is required to calculate the time of the last session activity. This field is at the same granularity as the main data and requires no transformation.
+    
+    \item \textbf{items.item\_id:} This field from the \inlinecode{items} array contains the unique identifier of an item associated with an activity (e.g., 9190330). Since \inlinecode{items} is a nested and repeated field, it has a different level of granularity compared to the main table, which is at the event level. To access each individual \inlinecode{item\_id} and enable us to concatenate them to create the list of abandoned products, we need to flatten this array. We can do this by using the \inlinecode{UNNEST} function, which effectively changes the granularity of the main data from an event level to the item level, allowing us to work with each item individually. Finally, we can use \inlinecode{STRING\_AGG} to concatenate item IDs across rows.
+    
+    \item \textbf{email:} This field contains the email associated with each \inlinecode{user\_pseudo\_id} and is required to enable us to contact customers following abandonment. This field is from an external data source and must be joined to \inlinecode{events\_12\_2020} on the shared \inlinecode{user\_pseudo\_id} field. Because we can only alert users with a registered email, we will use an \inlinecode{INNER JOIN} to exclude sessions without an email.
+\end{itemize}
+
+\subsection{Automation and Maintenance}
+
+\subsubsection{Automation:} Given that \inlinecode{events\_12\_2020} and our external source of user emails are updated automatically, we need to do the following to automate our analysis:
+
+\begin{itemize}
+    \item Schedule our transformation to run in BigQuery every 15 minutes, seven days per week. While a view could also be used for our Actionable Dataset, a scheduled query is preferable as it allows for monitoring and alerts on failed runs, and can be more cost-effective if the dataset is queried frequently.
+    \vspace{3pt}
+    \begin{center}
+        \begin{tcolorbox}[sidenote]
+            Given that our transformation is relatively simple and runs frequently, I've opted to execute it as a single scheduled query rather than breaking it down into a modular dbt project. This approach enhances performance and improves cost-efficiency by reducing the overhead associated with materialising multiple consecutive queries.
+        \end{tcolorbox}
+    \vspace{3pt}    
+\end{center}
+    \item Set up an API connection between Adobe Campaign and BigQuery to import data from our Actionable Dataset every 15 minutes, ensuring that the most recent data is available for email triggers.
+\end{itemize}
+
+\subsubsection{Maintenance:} There are several potential issues that could cause our analysis to fail or behave unexpectedly:
+
+\begin{itemize}
+    \item \textbf{Scheduled Run Failure:} Solution: Implement run failure alerts to notify us of any issues with the scheduled transformations.
+    \item \textbf{Upstream Errors:} Errors or null values in fields such as \inlinecode{user\_pseudo\_id} in either the events or email lookup tables could cause the join between these tables to fail, preventing email delivery for affected users. Solution: Regular data quality scans to identify and rectify such issues.
+\end{itemize}
+
+\section{Technical Specifications}
+\label{sec:Part2}
+
+\subsection{Datasets and Data Fields}
+
+\subsubsection{Source Data:}
+The source data for this project comes from Google Analytics 4 (GA4) event logs, specifically from the \inlinecode{events} table in BigQuery. Additionally, a separate table containing user email addresses linked by \inlinecode{user\_pseudo\_id} will be used.
+
+\vspace{3pt}
+\begin{center}
+\begin{tcolorbox}[sidenote]
+The task description specifies that the data should be for December 2020. However, the provided link only includes data for January 1, 2021. To address this, I created a custom table by unioning data for all days in December 2020 (\inlinecode{events\_12\_2020}), which I then used as the source for the events data.
+\end{tcolorbox}
+\end{center}
+\vspace{3pt}
+
+\subsubsection{Fields Used in the Actionable Dataset:}
+The following fields from the source data will be used to generate the Actionable Dataset:
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.2\textwidth} > {\raggedright\arraybackslash}p{0.5\textwidth}}
+    \toprule
+    \textbf{Field Name} & \textbf{Source} & \textbf{Description} \\
+    \midrule
+    \endhead % Repeats header on each page
+    \inlinecode{email} &  \inlinecode{email\_lookup} & The email address of the visitor, used for triggering abandonment emails. \\
+    \inlinecode{user\_pseudo\_id} & \inlinecode{events\_12\_2020} & A pseudonymous identifier for the user. \\
+    \inlinecode{session\_id} & \inlinecode{events\_12\_2020} & The session ID, created by concatenating \inlinecode{user\_pseudo\_id} and the \inlinecode{ga\_session\_id}. \\
+    \inlinecode{item\_id} & \inlinecode{events\_12\_2020}, \inlinecode{items} array & The ID of the item added to the basket. \\
+    \inlinecode{event\_timestamp} & \inlinecode{events\_12\_2020} & The timestamp of the event in microseconds, used to determine the abandonment time. \\
+    \inlinecode{normal\_timestamp} & \inlinecode{events\_12\_2020} & A human-readable timestamp converted from \inlinecode{event\_timestamp}. \\
+    \inlinecode{abandoned\_products} & Derived & A concatenated string of item IDs that were abandoned in the basket. \\
+    \inlinecode{abandon\_timestamp} & Derived & The timestamp at which the basket was considered abandoned. \\
+    \inlinecode{abandon\_count} & Derived & The count of abandonments by the same user. \\
+    \bottomrule
+\end{longtable}
+
+\subsection{Temporary Datasets and Data Aggregation}
+
+\subsubsection{Temporary Datasets:}
+The following Common Table Expressions (CTEs) are used to create the final Actionable Dataset:
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.35\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.35\textwidth}}
+    \toprule
+    \textbf{CTE Name} & \textbf{Purpose} & \textbf{Description} \\
+    \midrule
+    \endhead % Repeats header on each page
+    \inlinecode{events\_data} & Initial extraction and processing & Extracts relevant fields from the \inlinecode{events\_12\_2020} table and unnests the \inlinecode{items} array. \\
+    \inlinecode{add\_emails} & Email enrichment & Joins the \inlinecode{events\_data} CTE with the \inlinecode{email\_lookup} table to associate users with their emails. \\
+    \inlinecode{session\_last\_event} & Session-based time calculations & Calculates the last event time for each session. \\
+    \inlinecode{session\_purchase\_status} & Purchase flagging & Determines if a purchase occurred in a session and flags it accordingly. \\
+    \inlinecode{session\_basket\_contents} & Abandoned products aggregation & Aggregates item IDs for products added to the basket during a session. \\
+    \inlinecode{session\_abandoned\_status} & Abandonment detection & Identifies whether a session is abandoned based on the absence of a purchase and the time elapsed since the last event. \\
+    \inlinecode{final\_output} & Final dataset preparation & Produces the final Actionable Dataset with all required fields. \\
+    \bottomrule
+\end{longtable}
+
+\begin{figure}[p]
+\centering
+
+% Adjust space above the diagram
+\vspace{10pt} % Adjust this value as needed
+
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={font=\biolinum\small}, align=center]
+
+% Define block styles
+\tikzstyle{data} = [rectangle, rounded corners, minimum width=3.5cm, minimum height=1.3cm, text centered, draw=black, fill=orange!30, font=\biolinum\bfseries]
+\tikzstyle{process} = [rectangle, minimum width=3.5cm, minimum height=1.3cm, text centered, draw=black, fill=blue!20, font=\biolinum\bfseries]
+\tikzstyle{test} = [rectangle, rounded corners, minimum width=3.5cm, minimum height=1.3cm, text centered, draw=black, fill=red!30, font=\biolinum\bfseries]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Define nodes
+\node (events) [data] {\textbf{events\_12\_2020}\\[-1ex] \normalfont{\small{(GA4 events data)}}};
+\node (email) [data, below of=events, yshift=-1cm] {\textbf{email\_lookup}\\[-1ex] \normalfont{\small{(email data)}}};
+
+\node (events_data) [process, right of=events, xshift=4.5cm] {\textbf{events\_data}\\[-1ex] \normalfont{\small{(extract and unnest)}}};
+\node (add_emails) [process, below of=events_data, yshift=-1cm] {\textbf{add\_emails}\\[-1ex] \normalfont{\small{(join email data)}}};
+\node (session_last_event) [process, below of=add_emails, yshift=-1cm] {\textbf{session\_last\_event}\\[-1ex] \normalfont{\small{(session-based time)}}};
+\node (session_purchase_status) [process, below of=session_last_event, yshift=-1cm] {\textbf{session\_purchase\_status}\\[-1ex] \normalfont{\small{(flag purchase status)}}};
+\node (session_basket_contents) [process, below of=session_purchase_status, yshift=-1cm] {\textbf{session\_basket\_contents}\\[-1ex] \normalfont{\small{(concatenate item IDs)}}};
+\node (session_abandoned_status) [process, below of=session_basket_contents, yshift=-1cm] {\textbf{session\_abandoned\_status}\\[-1ex] \normalfont{\small{(detect abandonment)}}};
+
+\node (final_output) [data, right of=session_abandoned_status, xshift=4.5cm] {\textbf{basket\_abandonment}\\[-1ex] \normalfont{\small{(Actionable Dataset)}}};
+
+% Define test nodes
+\node (final_tests) [test, below of=final_output, yshift=-1.5cm] {\textbf{Validation Tests} \\[-1ex] \normalfont{\small{(null, unique, etc.)}}};
+
+% Draw arrows
+\draw [arrow] (events) -- (events_data);
+\draw [arrow] (email) -- (add_emails);
+\draw [arrow] (events_data) -- (add_emails);
+\draw [arrow] (add_emails) -- (session_last_event);
+\draw [arrow] (session_last_event) -- (session_purchase_status);
+\draw [arrow] (session_purchase_status) -- (session_basket_contents);
+\draw [arrow] (session_basket_contents) -- (session_abandoned_status);
+\draw [arrow] (session_abandoned_status) -- (final_output);
+
+% Draw test arrows
+\draw [arrow, dashed] (final_output) -- (final_tests);
+
+% Group the CTEs
+\node[draw=gray, dashed, inner sep=0.7cm, fit=(events_data) (session_abandoned_status)] (ctegroup) {};
+\node[below=0.1cm of ctegroup.south, font=\biolinum\small] {Scheduled Query};
+
+% Key Box
+\node[inner sep=0.3cm, thin, align=center, font=\biolinum] at (current bounding box.north east) [anchor=north east, yshift=0cm, xshift=-0.05cm] (keybox) {
+    \textbf{Legend} \\[0.2cm]
+    \begin{tikzpicture}
+        \node[data] (table) {Table};
+        \node[process, below of=table, yshift=-0.2cm, draw] (cte) {CTE};
+        \node[test, below of=cte, yshift=-0.2cm, draw] (test) {Test};
+    \end{tikzpicture}
+};
+
+\end{tikzpicture}
+
+\end{figure}
+
+\subsubsection{Data Aggregation Methods:}
+The following methods are used to aggregate and transform the data:
+
+\begin{itemize}
+    \item \inlinecode{STRING\_AGG}: Used to concatenate multiple item IDs into a single string representing the products in the abandoned basket.
+    \item \inlinecode{ROW\_NUMBER}: Used to assign a sequential count of abandonment instances per user.
+    \item \inlinecode{MAX}, \inlinecode{MIN}: Used to determine the first and last events in a session for time-based calculations.
+\end{itemize}
+
+\subsection{Automation and Refresh Schedule}
+
+\subsubsection{Query Scheduling:}
+The query will be scheduled to run in BigQuery every 15 minutes. This ensures that the Actionable Dataset is updated regularly to reflect the latest user activity on the Google Merchandise Store.
+
+\subsubsection{Adobe Campaign Integration:}
+An API connection will be established between BigQuery and Adobe Campaign. Every 15 minutes, Adobe Campaign will query the Actionable Dataset in BigQuery to retrieve the latest abandoned basket data and trigger email notifications to users.
+
+\section{Creating the Actionable Dataset}
+\label{sec:Part3}
+
+Attached to this submission, you will find the following files:
+
+\begin{itemize}
+    \item \inlinecode{union\_events.sql}: The SQL script used to union data for all days in December 2020.
+    \item \inlinecode{basket\_abandonment.sql}: The SQL script used to generate the final Actionable Dataset.
+    \item \inlinecode{tests.sql}: SQL scripts to test and validate the Actionable Dataset.
+    \item \inlinecode{actionable\_dataset.csv}: The final Actionable Dataset for December 2020.
+\end{itemize}
+
+\vspace{5pt}
+
+\noindent The SQL scripts used to create and test the Actionable Dataset are also available on \href{https://bit.ly/basket-abandonment}{GitHub}.
+
+\end{document}
