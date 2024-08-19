@@ -1,6 +1,6 @@
 CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
    WITH
-      base AS (
+      events_data AS (
          SELECT
             ev.user_pseudo_id,
             CONCAT(
@@ -20,16 +20,16 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
             i.item_id,
             i.item_name
          FROM
-            `basket-abandonment.emails.events_12_2020` AS ev
+            basket-abandonment.emails.events_12_2020 AS ev
             LEFT JOIN UNNEST (ev.items) AS i
       ),
       add_emails AS (
          SELECT
-            b.*,
-            e.email
+            ev.*,
+            em.email
          FROM
-            base b
-            INNER JOIN `basket-abandonment.emails.email_lookup` e ON b.user_pseudo_id = e.user_pseudo_id
+            events_data ev
+            INNER JOIN `basket-abandonment.emails.email_lookup` em ON ev.user_pseudo_id = em.user_pseudo_id
       ),
       last_event_per_session AS (
          SELECT
@@ -80,11 +80,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
          SELECT
             email,
             user_pseudo_id,
-            STRING_AGG(
-               abandoned_products
-               ORDER BY
-                  abandon_timestamp
-            ) AS abandoned_products,
+            abandoned_products,
             abandon_timestamp,
             ROW_NUMBER() OVER (
                PARTITION BY
@@ -99,10 +95,15 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
          GROUP BY
             email,
             user_pseudo_id,
-            abandon_timestamp
+            abandon_timestamp,
+            abandoned_products
       )
    SELECT
-      *
+      email,
+      user_pseudo_id,
+      abandoned_products,
+      abandon_timestamp,
+      abandon_count
    FROM
       final_output
 );
