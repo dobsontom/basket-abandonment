@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is designed to detect and analyse instances of basket abandonment for the Google Merchandise Store. It was developed as part of a submission for the Analytics Engineer role at fifty-five. The project enables automatic detection of users who add items to their shopping carts but fail to complete the purchase, enabling automatic follow-up reminder emails.
+This project is designed to detect and analyse instances of basket abandonment for the Google Merchandise Store. The project enables automatic detection of users who add items to their shopping carts but fail to complete the purchase, enabling automatic follow-up reminder emails.
 
 ## Key Components
 
