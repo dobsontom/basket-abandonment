@@ -106,4 +106,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
       abandon_count
    FROM
       final_output
+   ORDER BY
+      user_pseudo_id ASC,
+      abandon_count ASC
 );
