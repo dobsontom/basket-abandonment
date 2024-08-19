@@ -18,12 +18,12 @@ This project is designed to detect and analyse instances of basket abandonment f
   
 - **cloud_case_study_submission.pdf**: The final report submitted as part of the application.
 
-- **latex/**: Contains the LaTeX source files used to generate the PDF submission.
-
-- **queries/**: Contains SQL scripts used for data transformation and analysis, including:
+- - **queries**: Contains SQL scripts used for data transformation and analysis, including:
   - **union_events.sql**: A script to combine event data for all days in December 2020.
   - **basket_abandonment.sql**: The core script that creates the actionable dataset used for detecting basket abandonment.
   - **tests.sql**: Scripts to validate and test the actionable dataset.
+
+- **latex**: Contains the LaTeX source files used to generate the PDF submission.
 
 ## How to Use
 
