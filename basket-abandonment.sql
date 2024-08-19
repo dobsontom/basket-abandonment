@@ -67,7 +67,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
       abandoned_status AS (
          SELECT
             *,
-            TIMESTAMP_ADD(last_event_dttm, INTERVAL 45 MINUTE) AS abandon_timestamp,
+            UNIX_MICROS(TIMESTAMP_ADD(last_event_dttm, INTERVAL 45 MINUTE)) AS abandon_timestamp,
             CASE
                WHEN purchase_flag = 0
                AND TIMESTAMP_ADD(last_event_dttm, INTERVAL 45 MINUTE) < CURRENT_TIMESTAMP() THEN TRUE
