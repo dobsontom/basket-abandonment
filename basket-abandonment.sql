@@ -31,7 +31,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
             events_data ev
             INNER JOIN `basket-abandonment.emails.email_lookup` em ON ev.user_pseudo_id = em.user_pseudo_id
       ),
-      last_event_per_session AS (
+      session_last_event AS (
          SELECT
             *,
             MAX(normal_timestamp) OVER (
@@ -41,7 +41,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
          FROM
             add_emails
       ),
-      purchase_status AS (
+      session_purchase_status AS (
          SELECT
             *,
             MAX(IF(event_name = 'purchase', 1, 0)) OVER (
@@ -50,9 +50,9 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
                   session_id
             ) AS purchase_flag
          FROM
-            last_event_per_session
+            session_last_event
       ),
-      basket_contents AS (
+      session_basket_contents AS (
          SELECT
             *,
             STRING_AGG(item_id) OVER (
@@ -60,11 +60,11 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
                   session_id
             ) AS abandoned_products
          FROM
-            purchase_status
+            session_purchase_status
          WHERE
             event_name = 'add_to_cart'
       ),
-      abandoned_status AS (
+      session_abandoned_status AS (
          SELECT
             *,
             UNIX_MICROS(TIMESTAMP_ADD(last_event_dttm, INTERVAL 45 MINUTE)) AS abandon_timestamp,
@@ -74,7 +74,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
                ELSE FALSE
             END AS abandoned_flag
          FROM
-            basket_contents
+            session_basket_contents
       ),
       final_output AS (
          SELECT
@@ -89,7 +89,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
                   abandon_timestamp
             ) AS abandon_count
          FROM
-            abandoned_status
+            session_abandoned_status
          WHERE
             abandoned_flag = TRUE
          GROUP BY
