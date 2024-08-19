@@ -16,7 +16,7 @@ This project is designed to detect and analyse instances of basket abandonment f
 
 - **actionable_dataset.csv**: The final dataset containing the results of the basket abandonment detection for December 2020. This dataset is used to trigger follow-up actions.
   
-- **cloud_case_study_submission.pdf**: The final report submitted as part of the application.
+- **Cloud_Case_Study_Submission_Tom_Dobson.pdf**: The final report submitted as part of the application.
 
 - **queries**: Contains SQL scripts used for data transformation and analysis, including:
     - **union_events.sql**: A script to combine event data for all days in December 2020.
@@ -28,7 +28,7 @@ This project is designed to detect and analyse instances of basket abandonment f
 ## How to Use
 
 1. **Viewing the Submission**:
-   - The `cloud_case_study_submission.pdf` file contains the detailed documentation of the project.
+   - The `Cloud_Case_Study_Submission_Tom_Dobson.pdf` file contains the detailed documentation of the project.
    
 2. **Running the SQL Scripts**:
    - The SQL scripts located in the `queries` directory can be executed in BigQuery to generate the Actionable Dataset needed for basket abandonment detection.
