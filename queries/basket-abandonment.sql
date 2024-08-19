@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE `basket-abandonment.basket_abandonment.actionable_dataset` AS (
+CREATE OR REPLACE TABLE `basket-abandonment.basket_abandonment.basket_abandonment` AS (
    WITH
       events_data AS (
          SELECT
