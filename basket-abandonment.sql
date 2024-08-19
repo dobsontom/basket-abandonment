@@ -48,11 +48,7 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
                PARTITION BY
                   user_pseudo_id,
                   session_id
-            ) AS purchase_flag,
-            STRING_AGG(event_name) OVER (
-               PARTITION BY
-                  session_id
-            ) AS events
+            ) AS purchase_flag
          FROM
             last_event_per_session
       ),
@@ -84,16 +80,26 @@ CREATE OR REPLACE TABLE `basket-abandonment.emails.basket_abandonment` AS (
          SELECT
             email,
             user_pseudo_id,
-            abandoned_products,
+            STRING_AGG(
+               abandoned_products
+               ORDER BY
+                  abandon_timestamp
+            ) AS abandoned_products,
             abandon_timestamp,
             ROW_NUMBER() OVER (
                PARTITION BY
                   user_pseudo_id
                ORDER BY
-                  normal_timestamp
+                  abandon_timestamp
             ) AS abandon_count
          FROM
             abandoned_status
+         WHERE
+            abandoned_flag = TRUE
+         GROUP BY
+            email,
+            user_pseudo_id,
+            abandon_timestamp
       )
    SELECT
       *
