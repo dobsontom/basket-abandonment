@@ -20,4 +20,4 @@ FROM
    `basket-abandonment.basket_abandonment.basket_abandonment`
 GROUP BY
    user_pseudo_id,
-   abandon_timestamp
+   abandon_timestamp;
