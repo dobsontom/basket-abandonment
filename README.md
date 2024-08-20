@@ -34,6 +34,3 @@ This project is designed to detect and analyse instances of basket abandonment f
    - The SQL scripts located in the `queries` directory can be executed in BigQuery to generate the Actionable Dataset needed for basket abandonment detection.
    - `basket_abandonment.sql` should be scheduled in BigQuery to automate the detection process, ensuring up-to-date actionable datasets.
 
-## Contact
-
-For any questions or further information, please contact **Tom Dobson**.
